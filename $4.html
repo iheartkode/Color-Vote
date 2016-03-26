@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>COLOR VOTE Angular/Firebase color voting system</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="css/normalize.css">
+
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css'>
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.css'>
+
+        <link rel="stylesheet" href="css/style.css">
+  </head>
+
+  <body>
+
+    <br />
+<div ng-app="App" ng-controller="AppCtrl" class="container">
+  <h2><i class="fa fa-bullhorn"></i> COLOR VOTE</h2>
+  <h4>Add colors and vote on them!!!</h4>
+  <p>Color formats accepted: named colors, hex or rgba.</p>
+  <div>
+    <input type="text" placeholder="color" ng-model="name" />
+    <button ng-click="add()">add color</button>
+  </div>
+  <div>
+    <div id="color-grid">
+      <div ng-repeat="color in colors | orderBy: '-count' ">
+        <p ng-click="delete(color)" class="name">{{ color.name }} </p>
+        <div class="color-unit" ng-style="{background: color.name}">
+          <button ng-click="vote(color)" class="count"><i class="fa fa-thumbs-up"></i>{{ color.count }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <script src='https://cdn.firebase.com/js/client/2.2.4/firebase.js'></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.2/angular.min.js'></script>
+<script src='https://cdn.firebase.com/libs/angularfire/1.1.4/angularfire.min.js'></script>
+<script src="js/index.js"></script>
+  </body>
+</html>
